@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="patents" data-aos="fade-up" class="mb-5">
+  <h1>Patents</h1>
+  {% for patent in cv.patents %}
+  <div class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <h4>{{ patent.title }}</h4>
+      <p>{{ patent.description }}</p>
+      <p><small class="text-muted">{{ patent.date }}</small></p>
+      <p><strong>Domain:</strong> {{ patent.domain }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

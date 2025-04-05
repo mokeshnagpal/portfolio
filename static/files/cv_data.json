@@ -1,0 +1,116 @@
+{
+  "full_name": "Mokesh Nagpal",
+  "professional_summary": "An aspiring Data Scientist with strong technical skills in web technologies, programming, and data visualization. A fluent coder, curious learner, and innovative problem-solver dedicated to driving actionable insights.",
+  "work_experience": [
+    {
+      "position": "Placement Coordinator",
+      "company": "Training and Placemnt Cell, BIT - Mesra",
+      "description": "Led innovative initiatives and managed team operations to enhance hostel activities.",
+      "start_date": "2025",
+      "end_date": "2026"
+    },
+    {
+      "position": "Class Representative",
+      "company": "School of Computer Applications, LPU",
+      "description": "Coordinated academic and extracurricular events to represent and support the class.",
+      "start_date": "2022",
+      "end_date": "2024"
+    },
+    {
+      "position": "Vice President",
+      "company": "Hostel 4 Committee, LPU",
+      "description": "Led innovative initiatives and managed team operations to enhance hostel activities.",
+      "start_date": "2023",
+      "end_date": "2023"
+    }
+  ],
+  "education": [
+    {
+      "degree": "Master of Computer Applications",
+      "institution": "Birla Institute of Technoloogy, Mesra",
+      "start_date": "Aug '24",
+      "end_date": "July '26 (Expected)",
+      "details": "C.G.P.A. - 8.93"
+    },
+    {
+      "degree": "Bachelor of Computer Applications",
+      "institution": "Lovely Professional University, Pharwara",
+      "start_date": "Aug '21",
+      "end_date": "July '24",
+      "details": "C.G.P.A. - 9.43"
+    }
+  ],
+  "skills": {
+    "programming_languages": ["Python", "R", "C", "C++", "Micropython"],
+    "web_technologies": ["Flask", "HTML5", "CSS", "JavaScript", "PHP"],
+    "databases": ["MySQL", "Firebase"],
+    "data_visualization": ["Tableau"],
+    "machine_learning": ["Machine Learning", "Deep Learning", "Data Science"],
+    "embedded_systems": ["Arduino", "MicroPython", "Tkinter"],
+    "algorithms": ["Data Structures and Algorithms"]
+  },
+  "projects": [
+    {
+      "title": "Adaptive Traffic Management System",
+      "description": "Developed a deep learning solution to reduce traffic congestion with image processing.",
+      "date": "Sep '24",
+      "technologies": ["Python", "Flask"]
+    },
+    {
+      "title": "Moisture Detection and Prediction System",
+      "description": "Created a Flask-based server and app for real-time sensor data input and moisture prediction.",
+      "date": "Jun '24",
+      "technologies": ["Python", "HTML", "CSS", "JavaScript", "MicroPython"]
+    },
+    {
+      "title": "Data Analysis on Climate Change",
+      "description": "Analyzed climate data, handled missing values with regression, and forecasted indicators using ARIMA.",
+      "date": "Apr '24",
+      "technologies": ["R Studios"]
+    },
+    {
+      "title": "Data Visualization on Death and Wars",
+      "description": "Preprocessed data and created interactive visualizations using Tableau and R.",
+      "date": "Oct '23",
+      "technologies": ["Tableau", "R"]
+    },
+    {
+      "title": "E-Commerce Website",
+      "description": "Built a revenue-generating website using HTML, CSS, JavaScript, MySQL, and PHP.",
+      "date": "Dec '22",
+      "technologies": ["HTML", "CSS", "JavaScript", "MySQL", "PHP"]
+    }
+  ],
+  "patents": [
+    {
+      "title": "Sustainable Elevator | Applied",
+      "description": "Optimized algorithm for elevator movement with energy regeneration and emergency handling.",
+      "date": "Feb '24",
+      "domain": "IOT, Machine Learning, Mechanical, Electrical, Automation"
+    },
+    {
+      "title": "Smart Pillow | 202311080891",
+      "description": "Developed a prototype that adjusts pillow dimensions based on sleeping posture.",
+      "date": "Dec '23",
+      "technologies": ["Machine Learning, Image Processinng, IOT, Automation"]
+    },
+    {
+      "title": "Smart Container | 202311020732 A",
+      "description": "Developed a prototype that allows the measurement of any flowable material such as spices, sugar, rice, etc. present in a container.",
+      "date": "Mar '23",
+      "domain": "IOT, Automation"
+    },
+    {
+      "title": "Smart Room | 202311042366 A",
+      "description": "Developed a prototype that uses ultrasonic for human presence and other smart technologies to save electricity in a household.",
+      "date": "Mar '23",
+      "domain": "IOT, Automation"
+    }
+  ],
+  "social_links": {
+    "github": "https://github.com/mokeshnagpal",
+    "linkedin": "https://www.linkedin.com/in/mokeshnagpal",
+    "email": "nagpalmokesh@gmail.com",
+    "phone": "+91 9903855585"
+  }
+}

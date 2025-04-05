@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="skills" data-aos="fade-up" class="mb-5">
+  <h1>Skills</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Technical Skills</h3>
+      <ul>
+        {% for category, items in cv.skills.items() %}
+        <li>
+          <strong>{{ category.replace('_',' ')|title }}:</strong>
+          {{ items|join(', ') }}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3>Skill Distribution</h3>
+      <canvas id="skillsChart"></canvas>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const ctx = document.getElementById('skillsChart').getContext('2d');
+    const labels = {{ cv.skills.keys() | map('replace', '_', ' ') | map('title') | list | tojson
+  }};
+  const counts = {{ cv.skills.values() | map('length') | list | tojson }};
+  const total = counts.reduce((a, b) => a + b, 0);
+  const data = counts.map(n => Math.round(n / total * 100));
+
+  new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: [
+          '#4A4E69', // Charcoal gray
+          '#C9ADA7', // Accent warm rose
+          '#A8D5BA', // Soft pastel green
+          '#7DA7D9', // Muted blue
+          '#E5989B', // Muted coral
+          '#F6C23E', // Warm gold
+          '#8B1E3F'  // Rich burgundy
+        ]
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom' }
+      }
+    }
+  });
+  });
+</script>
+{% endblock %}

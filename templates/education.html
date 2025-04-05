@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="education" data-aos="fade-up" class="mb-5">
+    <h1>Education</h1>
+    {% for edu in cv.education %}
+    <div class="card mb-3 shadow-sm">
+        <div class="card-body">
+            <h4>{{ edu.degree }}</h4>
+            <p>{{ edu.institution }}</p>
+            <p><small class="text-muted">{{ edu.start_date }} - {{ edu.end_date }}</small></p>
+            <p>{{ edu.details }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
