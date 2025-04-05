@@ -1,9 +1,13 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for, flash
 import json
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your_secure_secret_key'  # Change this to a secure key
+app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'fallback_secret_key')
+
 
 def load_cv_data():
     """Load CV data from a JSON file."""
