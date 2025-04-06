@@ -2,12 +2,29 @@ from flask import Flask, render_template, request, send_from_directory, redirect
 import json
 import os
 from dotenv import load_dotenv
+import firebase_admin
+from firebase_admin import credentials, firestore
 
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('FLASK_SECRET_KEY', 'fallback_secret_key')
 
+# Load Firebase credentials from the environment variable
+firebase_credentials_str = os.environ.get('FIREBASE_CREDENTIALS')
+if not firebase_credentials_str:
+    raise ValueError("FIREBASE_CREDENTIALS environment variable not set.")
+
+firebase_credentials_dict = json.loads(firebase_credentials_str)
+
+# Replace literal '\\n' with actual newline characters in the private key
+if 'private_key' in firebase_credentials_dict:
+    firebase_credentials_dict['private_key'] = firebase_credentials_dict['private_key'].replace('\\n', '\n')
+
+# Initialize Firebase Admin with the credentials dictionary
+cred = credentials.Certificate(firebase_credentials_dict)
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 def load_cv_data():
     """Load CV data from a JSON file."""
@@ -56,10 +73,21 @@ def contact():
         if not name or not email or not subject or not message:
             flash('All fields are required!', 'danger')
             return redirect(url_for('contact'))
-        # Here, you can process the message (store in DB or send an email)
-        # For demonstration, we simply flash a success message.
-        flash('Your message has been sent successfully!', 'success')
-        # Optionally, log the message to a file (or other processing)
+        # Save the message to Firebase Firestore
+        try:
+            doc_ref = db.collection('messages').document()  # Auto-generated document ID
+            doc_ref.set({
+                'name': name,
+                'email': email,
+                'subject': subject,
+                'message': message,
+                'timestamp': firestore.SERVER_TIMESTAMP,
+            })
+            flash('Your message has been sent successfully!', 'success')
+        except Exception as e:
+            flash('An error occurred while sending your message. Please try again later.', 'danger')
+            print(f"Error saving message to Firebase: {e}")
+        # Optionally, also log the message to a local file
         with open("static/files/messages.log", "a") as log:
             log.write(f"From: {name} <{email}>\nSubject: {subject}\nMessage: {message}\n{'-'*40}\n")
         return redirect(url_for('contact'))
@@ -74,7 +102,6 @@ def download_cv():
         as_attachment=True
     )
 
-# Route to serve the favicon from the static directory
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(
