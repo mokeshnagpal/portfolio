@@ -1,25 +1,115 @@
 {% extends "base.html" %}
+
 {% block content %}
-<section id="projects" data-aos="fade-up" class="mb-5">
-  <h2 class="text-center">Projects</h2>
-  <div class="row">
-    {% for project in cv.projects %}
-    <div class="col-md-6 col-lg-4 mb-4">
-      <div class="card project-card h-100">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ project.title }}</h5>
-          <p class="card-text">{{ project.description }}</p>
-          <p class="card-text"><small class="text-muted">{{ project.date }}</small></p>
-          {% if project.technologies %}
-          <p class="card-text"><strong>Technologies:</strong> {{ project.technologies | join(', ') }}</p>
+<section id="projects" class="py-5 bg-light">
+  <div class="container">
+
+    <!-- Section Heading -->
+    <h2 class="text-center mb-4" data-aos="fade-up">🚀 Projects</h2>
+
+    {# Server-passed filter variables #}
+    {% set current_filter = current_filter %}
+    {% set current_value = current_value %}
+
+    <!-- Filter Options -->
+    <div class="filter-options text-center mb-5">
+      <!-- Top 6 -->
+      <a href="{{ url_for('projects', filter='top') }}"
+        class="btn btn-light btn-lg me-2 {% if current_filter=='top' %}active{% endif %}">
+        Top 6
+      </a>
+
+      <!-- Category -->
+      <div class="btn-group me-2">
+        <button type="button"
+          class="btn btn-secondary btn-lg dropdown-toggle {% if current_filter=='category' %}active{% endif %}">
+          {{ current_filter=='category' and current_value or 'By Category' }}
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item {% if current_filter!='category' %}active{% endif %}"
+              href="{{ url_for('projects') }}">All Categories</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          {% for category in categories %}
+          <li>
+            <a class="dropdown-item {% if current_filter=='category' and current_value==category %}active{% endif %}"
+              href="{{ url_for('projects', filter='category', value=category) }}">
+              {{ category }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+
+      <!-- Stream -->
+      <div class="btn-group">
+        <button type="button"
+          class="btn btn-secondary btn-lg dropdown-toggle {% if current_filter=='stream' %}active{% endif %}">
+          {{ current_filter=='stream' and current_value or 'Stream' }}
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="dropdown-item {% if current_filter!='stream' %}active{% endif %}"
+              href="{{ url_for('projects') }}">All Streams</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          {% for stream in streams %}
+          <li>
+            <a class="dropdown-item {% if current_filter=='stream' and current_value==stream %}active{% endif %}"
+              href="{{ url_for('projects', filter='stream', value=stream) }}">
+              {{ stream }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-md-6 col-lg-4 mb-4" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="card h-100 shadow rounded-4 border-0">
+
+          {% if project.image_url %}
+          <img src="{{ url_for('static', filename='images/' ~ project.image_url) }}" class="card-img-top"
+            alt="{{ project.title }} screenshot"
+            style="object-fit:cover;height:180px;border-top-left-radius:.5rem;border-top-right-radius:.5rem;" />
           {% endif %}
-          {% if project.link %}
-          <a href="{{ project.link }}" target="_blank" class="mt-auto btn btn-outline-primary">View Project</a>
-          {% endif %}
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ project.title }}</h5>
+
+            <!-- New: Detailed Info List -->
+            <ul class="list-unstyled mb-3">
+              <li><strong>Type:</strong> {{ project.project_type }}</li>
+            </ul>
+
+            <p class="card-text">{{ project.description }}</p>
+
+            {% if project.technologies %}
+            <p class="card-text"><strong>Tech Stack:</strong> {{ project.technologies | join(', ') }}</p>
+            {% endif %}
+
+            <p class="card-text text-muted mt-auto"><small>{{ project.date }}</small></p>
+
+            {% if project.link %}
+            <a href="{{ project.link }}" target="_blank" class="btn btn-outline-primary mt-2">
+              View Project
+            </a>
+            {% endif %}
+          </div>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </section>
 {% endblock %}

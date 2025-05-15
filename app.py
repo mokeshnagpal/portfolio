@@ -55,9 +55,46 @@ def education():
 def skills():
     return render_template('skills.html', cv=cv_data)
 
+
 @app.route('/projects')
 def projects():
-    return render_template('projects.html', cv=cv_data)
+    # read query parameters
+    filter_by    = request.args.get('filter')
+    filter_value = request.args.get('value')
+
+    # all projects
+    all_projects = cv_data.get('projects', [])
+
+    # apply filtering server-side
+    if filter_by == 'top':
+        projects_list = all_projects[:6]
+    elif filter_by == 'category' and filter_value:
+        projects_list = [
+            p for p in all_projects
+            if p.get('project_category') == filter_value
+        ]
+    elif filter_by == 'type' and filter_value:
+        projects_list = [
+            p for p in all_projects
+            if p.get('project_type') == filter_value
+        ]
+    else:
+        projects_list = all_projects
+
+    # build dropdown options
+    categories    = sorted({p['project_category'] for p in all_projects if p.get('project_category')})
+    project_types = sorted({p['project_type']     for p in all_projects if p.get('project_type')})
+    streams = sorted({p['stream']     for p in all_projects if p.get('stream')})
+
+    return render_template(
+        'projects.html',
+        cv=cv_data,
+        projects=projects_list,
+        categories=categories,
+        streams  = streams, 
+        current_filter=filter_by or 'all',
+        current_value=filter_value or ''
+    )
 
 @app.route('/patents')
 def patents():
@@ -109,3 +146,6 @@ def favicon():
         'favicon.ico',
         mimetype='logo/favico.icon'
     )
+
+if __name__ == '__main__':
+    app.run(debug=True)

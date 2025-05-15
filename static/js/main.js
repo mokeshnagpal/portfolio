@@ -1,16 +1,15 @@
-// main.js
 document.addEventListener("DOMContentLoaded", function() {
-  // Smooth scroll for in-page links if needed.
-  const links = document.querySelectorAll('a.nav-link');
-  links.forEach(link => {
+  // Smooth scroll for nav links
+  document.querySelectorAll('a.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
-      if (this.hash !== "") {
+      if (this.hash) {
         e.preventDefault();
-        const target = document.querySelector(this.hash);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.querySelector(this.hash)
+                .scrollIntoView({ behavior: 'smooth' });
       }
     });
   });
+
+  // Refresh AOS (if content changes)
+  if (window.AOS) AOS.refresh();
 });

@@ -1,16 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <section id="education" data-aos="fade-up" class="mb-5">
-    <h1>Education</h1>
-    {% for edu in cv.education %}
-    <div class="card mb-3 shadow-sm">
-        <div class="card-body">
-            <h4>{{ edu.degree }}</h4>
-            <p>{{ edu.institution }}</p>
-            <p><small class="text-muted">{{ edu.start_date }} - {{ edu.end_date }}</small></p>
-            <p>{{ edu.details }}</p>
+    <h1 class="section-title">Education</h1>
+
+    <div class="timeline">
+        {% for edu in cv.education %}
+        <div class="timeline-entry" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card shadow-sm">
+                <div class="card-body">
+                    <h4>{{ edu.degree }}</h4>
+                    <h6 class="text-secondary mb-2">{{ edu.institution }}</h6>
+                    <p><small class="text-muted">{{ edu.start_date }} ‒ {{ edu.end_date }}</small></p>
+                    <p>{{ edu.details }}</p>
+                </div>
+            </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </section>
 {% endblock %}

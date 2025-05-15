@@ -1,64 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ cv.full_name }} - Portfolio</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo/favicon.ico') }}">
-  <!-- AOS Animation Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{% block title %}{{ cv.full_name }} – Portfolio{% endblock %}</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    rel="stylesheet"
+  />
+
+  <!-- Your Custom CSS -->
+  <link
+    href="{{ url_for('static', filename='css/styles.css') }}"
+    rel="stylesheet"
+  />
+
+  <!-- Font Awesome -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    rel="stylesheet"
+    integrity="sha512-…"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- AOS CSS -->
+  <link
+    href="https://unpkg.com/aos@2.3.4/dist/aos.css"
+    rel="stylesheet"
+  />
+
+  {% block head %}{% endblock %}
 </head>
-
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="/">{{ cv.full_name }}</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="/experience">Experience</a></li>
-            <li class="nav-item"><a class="nav-link" href="/education">Education</a></li>
-            <li class="nav-item"><a class="nav-link" href="/skills">Skills</a></li>
-            <li class="nav-item"><a class="nav-link" href="/projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="/patents">Patents</a></li>
-            <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
+        {{ cv.full_name }}
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <main class="container content-area" style="margin-top: 80px;">
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('experience') }}">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('education') }}">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('skills') }}">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('patents') }}">Patents</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer for fixed navbar -->
+  <div style="height: 70px;"></div>
+
+  <!-- Main content -->
+  <main class="container mb-5">
     {% block content %}{% endblock %}
   </main>
 
-  <footer class="bg-primary text-center text-white py-3 mt-5">
-    <div>© {{ cv.full_name }} Portfolio</div>
-    <div>
-      <a href="{{ cv.social_links.linkedin }}" target="_blank" class="text-white me-2">LinkedIn</a>
-      <a href="{{ cv.social_links.github }}" target="_blank" class="text-white">GitHub</a>
+  <!-- Footer -->
+  <footer class="bg-primary text-center text-white py-3">
+    <div>© {{ cv.full_name }}</div>
+    <div class="mt-1">
+      <a href="{{ cv.social_links.linkedin }}" target="_blank" class="text-white me-3">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="{{ cv.social_links.github }}" target="_blank" class="text-white">
+        <i class="fab fa-github"></i>
+      </a>
     </div>
   </footer>
 
+  <!-- Bootstrap Bundle (includes Popper) -->
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <!-- Chart.js for infographics -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <!-- AOS JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init();
+    AOS.init({ duration: 800, once: true });
   </script>
+
+  <!-- Your Custom JS -->
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   {% block scripts %}{% endblock %}
 </body>
-
 </html>

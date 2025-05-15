@@ -1,16 +1,44 @@
 {% extends "base.html" %}
 {% block content %}
-<section id="patents" data-aos="fade-up" class="mb-5">
-  <h1>Patents</h1>
-  {% for patent in cv.patents %}
-  <div class="card mb-3 shadow-sm">
-    <div class="card-body">
-      <h4>{{ patent.title }}</h4>
-      <p>{{ patent.description }}</p>
-      <p><small class="text-muted">{{ patent.date }}</small></p>
-      <p><strong>Domain:</strong> {{ patent.domain }}</p>
+<section id="patents" class="py-5 bg-light">
+  <div class="container">
+
+    <!-- Section Heading -->
+    <h2 class="text-center mb-4" data-aos="fade-up">📄 Patents</h2>
+
+    <!-- Patents Grid -->
+    <div class="row">
+      {% for patent in cv.patents %}
+      <div class="col-md-6 col-lg-4 mb-4"
+           data-aos="zoom-in"
+           data-aos-delay="{{ loop.index * 100 }}">
+        <div class="card h-100 shadow rounded-4 border-0">
+
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ patent.title }}</h5>
+
+            <!-- Detailed Info List -->
+            <ul class="list-unstyled mb-3">
+              {% if patent.domain %}
+              <li><strong>Domain:</strong> {{ patent.domain }}</li>
+              {% endif %}
+              {% if patent.patent_number %}
+              <li><strong>Patent #:</strong> {{ patent.patent_number }}</li>
+              {% endif %}
+            </ul>
+
+            <p class="card-text">{{ patent.description }}</p>
+
+            <p class="card-text text-muted mt-auto">
+              <small>{{ patent.date }}</small>
+            </p>
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
     </div>
+
   </div>
-  {% endfor %}
 </section>
 {% endblock %}
