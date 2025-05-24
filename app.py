@@ -146,6 +146,3 @@ def favicon():
         'favicon.ico',
         mimetype='logo/favico.icon'
     )
-
-if __name__ == '__main__':
-    app.run(debug=True)
