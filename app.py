@@ -135,7 +135,7 @@ def download_cv():
     # The downloadable file is stored under static/files/
     return send_from_directory(
         directory=os.path.join(app.root_path, 'static', 'files'),
-        path='mokesh nagpal.pdf',
+        path='Mokesh nagpal.pdf',
         as_attachment=True
     )
 
