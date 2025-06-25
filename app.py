@@ -3,6 +3,7 @@ import json
 import os
 from dotenv import load_dotenv
 import firebase_admin
+import requests
 from firebase_admin import credentials, firestore
 
 load_dotenv()
@@ -132,12 +133,7 @@ def contact():
 
 @app.route('/download_cv')
 def download_cv():
-    # The downloadable file is stored under static/files/
-    return send_from_directory(
-        directory=os.path.join(app.root_path, 'static', 'files'),
-        path='Mokesh nagpal.pdf',
-        as_attachment=True
-    )
+    return redirect("https://drive.google.com/file/d/1EHgmJnpcB4avabouX2NJynHnJLJg7_2i/view?usp=sharing")
 
 @app.route('/favicon.ico')
 def favicon():
@@ -146,3 +142,4 @@ def favicon():
         'favicon.ico',
         mimetype='logo/favico.icon'
     )
+
