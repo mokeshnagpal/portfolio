@@ -1,22 +1,39 @@
 {% extends "base.html" %}
 {% block content %}
-<section id="skills" data-aos="fade-up" class="mb-5">
+<section id="technical_skills" data-aos="fade-up" class="mb-5">
   <h1>Skills</h1>
   <div class="row">
     <div class="col-md-6">
       <h3>Technical Skills</h3>
       <ul>
-        {% for category, items in cv.skills.items() %}
+        {% for category, items in cv.tech_skills.items() %}
         <li>
           <strong>{{ category.replace('_',' ')|title }}:</strong>
-          {{ items|join(', ') }}
+          {{ items | join(', ') }}
         </li>
         {% endfor %}
       </ul>
     </div>
     <div class="col-md-6">
-      <h3>Skill Distribution</h3>
-      <canvas id="skillsChart"></canvas>
+      <h3>Technical Skill Distribution</h3>
+      <canvas id="technical_skillsChart"></canvas>
+    </div>
+  </div>
+</section>
+
+<section id="power_skills" data-aos="fade-up" class="mb-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>Power Skills</h3>
+      <ul>
+        {% for skill in cv.power_skills %}
+        <li>{{ skill }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h3>Power Skill Distribution</h3>
+      <canvas id="power_skillsChart"></canvas>
     </div>
   </div>
 </section>
@@ -25,35 +42,67 @@
 {% block scripts %}
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const ctx = document.getElementById('skillsChart').getContext('2d');
-    const labels = {{ cv.skills.keys() | map('replace', '_', ' ') | map('title') | list | tojson
+    // ----- Technical Skills Chart -----
+    const techCtx = document.getElementById('technical_skillsChart').getContext('2d');
+    const techLabels = {{ cv.tech_skills.keys()
+      | map('replace', '_', ' ')
+      | map('title')
+      | list
+      | tojson
   }};
-  const counts = {{ cv.skills.values() | map('length') | list | tojson }};
-  const total = counts.reduce((a, b) => a + b, 0);
-  const data = counts.map(n => Math.round(n / total * 100));
+  const techCounts = {{ cv.tech_skills.values()
+    | map('length')
+    | list
+    | tojson }};
+  const techTotal = techCounts.reduce((a, b) => a + b, 0);
+  const techData = techCounts.map(n => Math.round(n / techTotal * 100));
 
-  new Chart(ctx, {
+  new Chart(techCtx, {
     type: 'doughnut',
     data: {
-      labels: labels,
+      labels: techLabels,
       datasets: [{
-        data: data,
+        data: techData,
         backgroundColor: [
-          '#4A4E69', // Charcoal gray
-          '#C9ADA7', // Accent warm rose
-          '#A8D5BA', // Soft pastel green
-          '#7DA7D9', // Muted blue
-          '#E5989B', // Muted coral
-          '#F6C23E', // Warm gold
-          '#8B1E3F'  // Rich burgundy
+          '#4A4E69', '#C9ADA7', '#A8D5BA', '#7DA7D9',
+          '#E5989B', '#F6C23E', '#8B1E3F', '#81B29A',
+          '#F28482', '#FFB4A2'
         ]
+      }]
+    },
+    options: { responsive: true, plugins: { legend: { position: 'bottom' } } }
+  });
+
+  // ----- Power Skills Chart (radar) -----
+  const powerCtx = document.getElementById('power_skillsChart').getContext('2d');
+  const powerLabels = {{ cv.power_skills | tojson }};
+  const powerData = new Array(powerLabels.length).fill(100);
+
+  new Chart(powerCtx, {
+    type: 'radar',
+    data: {
+      labels: powerLabels,
+      datasets: [{
+        label: 'Power Skills',
+        data: powerData,
+        backgroundColor: 'rgba(129, 178, 154, 0.5)',
+        borderColor: '#81B29A',
+        borderWidth: 2,
+        pointBackgroundColor: '#3D405B'
       }]
     },
     options: {
       responsive: true,
-      plugins: {
-        legend: { position: 'bottom' }
-      }
+      scales: {
+        r: {
+          angleLines: { display: false },
+          suggestedMin: 0,
+          suggestedMax: 2,
+          ticks: { display: false },
+          pointLabels: { font: { size: 12 } }
+        }
+      },
+      plugins: { legend: { display: false } }
     }
   });
   });

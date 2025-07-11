@@ -658,3 +658,60 @@ footer a:hover {
   color: var(--clr-muted);
   margin-bottom: 1rem;
 }
+
+/* Card styling exactly like #projects and #patents */
+#research_works .card {
+  background-color: var(--clr-light);
+  border: none;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform var(--transition-speed),
+              box-shadow var(--transition-speed);
+  position: relative;
+}
+#research_works .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+#research_works .card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+#research_works .card-title {
+  color: var(--clr-primary);
+  margin: 0.5rem 0 0.75rem;
+}
+#research_works .card-text {
+  color: var(--clr-muted);
+  margin-bottom: 1rem;
+}
+
+
+#chatbot-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+  background-color: #007bff;
+  color: white;
+  font-size: 24px;
+  padding: 16px 18px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+#chatbot-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.1);
+}
+
+@media (max-width: 576px) {
+  #chatbot-btn {
+    font-size: 20px;
+    padding: 14px 16px;
+  }
+}

@@ -44,9 +44,13 @@ def home():
 def about():
     return render_template('about.html', cv=cv_data)
 
-@app.route('/experience')
-def experience():
-    return render_template('experience.html', cv=cv_data)
+@app.route('/work_experiences')
+def work_experiences():
+    return render_template('work_experiences.html', cv=cv_data)
+
+@app.route('/voluntary_works')
+def voluntary_works():
+    return render_template('voluntary_works.html', cv=cv_data)
 
 @app.route('/education')
 def education():
@@ -54,6 +58,10 @@ def education():
 
 @app.route('/skills')
 def skills():
+    cv_data['tech_skills'] = {
+        cat: [skill.strip() for skill in items.split(',')]
+        for cat, items in cv_data['technical_skills'].items()
+    }
     return render_template('skills.html', cv=cv_data)
 
 
@@ -101,6 +109,10 @@ def projects():
 def patents():
     return render_template('patents.html', cv=cv_data)
 
+@app.route('/research_works')
+def research_works():
+    return render_template('research_works.html', cv=cv_data)
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
@@ -133,13 +145,93 @@ def contact():
 
 @app.route('/download_cv')
 def download_cv():
-    return redirect("https://drive.google.com/file/d/1EHgmJnpcB4avabouX2NJynHnJLJg7_2i/view?usp=sharing")
+    return send_from_directory('static/files', 'mokesh_nagpal.pdf', as_attachment=True)
 
-@app.route('/favicon.ico')
+@app.route('/favicon')
 def favicon():
     return send_from_directory(
-        os.path.join(app.root_path, 'static'),
+        os.path.join(app.root_path, 'static', 'logo'),
         'favicon.ico',
-        mimetype='logo/favico.icon'
+        mimetype='favico.icon'
     )
 
+
+
+
+
+# Chatbot LangChain logic
+from langchain.prompts import PromptTemplate
+from langchain_core.runnables import RunnableLambda, RunnableParallel, RunnablePassthrough
+from langchain_core.output_parsers import StrOutputParser
+from langchain_huggingface import ChatHuggingFace, HuggingFaceEndpoint, HuggingFaceEndpointEmbeddings
+from langchain_community.vectorstores import FAISS
+import re
+
+hugg_str = os.environ.get('HUGGINGFACEHUB_API_TOKEN')
+
+llm = HuggingFaceEndpoint(
+    repo_id="deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+    task="text-generation",
+    huggingfacehub_api_token=hugg_str
+)
+model = ChatHuggingFace(llm=llm)
+
+embedding = HuggingFaceEndpointEmbeddings(
+    model="Qwen/Qwen3-Embedding-8B",
+    task="feature-extraction",
+    huggingfacehub_api_token=hugg_str
+)
+
+vectorstore = FAISS.load_local(
+    "static/db/faiss_index",
+    embeddings=embedding,
+    allow_dangerous_deserialization=True
+)
+
+prompt = PromptTemplate.from_template(
+    """You are a helpful AI assistant that analyzes resumes. 
+The following text contains a complete resume extracted from documents:
+
+{resume_text}
+
+Based on this resume, answer the user's question as accurately as possible. 
+Be specific and structured. If any relevant data is missing, state that clearly.
+
+Question: {question}
+Answer:"""
+)
+
+def extractor(output):
+    text = re.sub(r"<think>.*?</think>", "", output.content, flags=re.DOTALL)
+    first_brace = text.find("{")
+    raw_json = text[first_brace:] if first_brace != -1 else text
+    return type(output)(**{**output.model_dump(), "content": raw_json})
+
+st_parser = StrOutputParser()
+retriever = vectorstore.as_retriever(search_kwargs={"k": 3})
+combiner = RunnableLambda(lambda docs: {"resume_text": " ".join(d.page_content for d in docs)})
+pt = RunnablePassthrough()
+
+chain = RunnableParallel(
+    {"resume_text": retriever | combiner, "question": pt}
+) | prompt | model | extractor | st_parser
+
+@app.route('/chatbot', methods=['GET', 'POST'])
+def chatbot():
+    if request.method == 'POST':
+        user_question = request.form.get('question')
+        if not user_question:
+            return render_template('chat.html', response="Please enter a question.")
+        
+        try:
+            response = chain.invoke(user_question)
+        except Exception as e:
+            print(f"Chatbot error: {e}")
+            response = "An error occurred while processing your request."
+
+        return render_template('chat.html', response=response, question=user_question, cv=cv_data)
+    return render_template('chat.html', cv=cv_data)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

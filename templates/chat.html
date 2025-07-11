@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="chatbot" class="py-5 bg-light">
+    <div class="container">
+
+        <!-- Section Heading -->
+        <h2 class="text-center mb-4" data-aos="fade-up">🤖 Resume Chatbot Assistant</h2>
+
+        <!-- Chat Form -->
+        <div class="row justify-content-center mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow rounded-4 border-0 p-4">
+                    <form method="POST">
+                        <div class="form-group mb-3">
+                            <label for="question" class="form-label"><strong>Ask a question about the
+                                    resume:</strong></label>
+                            <textarea class="form-control" name="question" id="question" rows="4"
+                                placeholder="e.g., What are the candidate's key skills?"
+                                required>{{ question or '' }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary px-4">Ask</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Response -->
+        {% if response %}
+        <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow rounded-4 border-0 p-4 bg-white">
+                    <h5 class="mb-3">💬 <strong>Chatbot Response:</strong></h5>
+                    <p class="mb-0" style="white-space: pre-wrap;">{{ response }}</p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+</section>
+{% endblock %}

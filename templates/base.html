@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{% block title %}{{ cv.full_name }} – Portfolio{% endblock %}</title>
 
   <!-- Bootstrap CSS -->
-  <link
-    href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
-    rel="stylesheet"
-  />
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet" />
 
   <!-- Your Custom CSS -->
-  <link
-    href="{{ url_for('static', filename='css/styles.css') }}"
-    rel="stylesheet"
-  />
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
 
   <!-- Font Awesome -->
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    rel="stylesheet"
-    integrity="sha512-…"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"
+    integrity="sha512-…" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- AOS CSS -->
-  <link
-    href="https://unpkg.com/aos@2.3.4/dist/aos.css"
-    rel="stylesheet"
-  />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='logo/favicon.ico') }}">
+
+
 
   {% block head %}{% endblock %}
 </head>
+
 <body>
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
@@ -41,15 +32,8 @@
       <a class="navbar-brand fw-bold" href="{{ url_for('home') }}">
         {{ cv.full_name }}
       </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -57,11 +41,13 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('experience') }}">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('voluntary_works') }}">Voluntary Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('work_experiences') }}">Work Experience</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('education') }}">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('skills') }}">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('projects') }}">Projects</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('patents') }}">Patents</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('research_works') }}">Research Works</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
       </div>
@@ -86,11 +72,16 @@
       <a href="{{ cv.social_links.github }}" target="_blank" class="text-white">
         <i class="fab fa-github"></i>
       </a>
+      <a href="{{ cv.social_links.leetcode }}" target="_blank" class="text-white">
+        <i class="fa-solid fa-code"></i>
+      </a>
     </div>
   </footer>
 
   <!-- Bootstrap Bundle (includes Popper) -->
+
   <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+
 
   <!-- AOS JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
@@ -102,5 +93,10 @@
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   {% block scripts %}{% endblock %}
+  <a href="{{ url_for('chatbot') }}" id="chatbot-btn" title="Chat with Resume Assistant">
+    💬
+  </a>
+
 </body>
+
 </html>

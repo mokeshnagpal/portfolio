@@ -1,7 +1,15 @@
 {
   "full_name": "Mokesh Nagpal",
   "professional_summary": "An aspiring Data Scientist with strong technical skills in web technologies, programming, and data visualization. A fluent coder, curious learner, and innovative problem-solver dedicated to driving actionable insights.",
-  "work_experience": [
+  "work_experiences": [
+    {
+      "position": "Data Science Intern",
+      "company": "Ernst & Young (EY)",
+      "description": "Focused on natural language processing, text classification, prompt engineering, and fine‑tuning generative AI models.",
+      "start_date": "May '25",
+      "end_date": "Jul '25"
+    }],
+  "voluntary_works": [
     {
       "position": "Placement Coordinator",
       "company": "Training and Placemnt Cell, BIT - Mesra",
@@ -40,16 +48,91 @@
       "details": "C.G.P.A. - 9.43"
     }
   ],
-  "skills": {
-    "programming_languages": ["Python", "R", "C", "C++", "Micropython"],
-    "web_technologies": ["Flask", "HTML5", "CSS", "JavaScript", "PHP"],
-    "databases": ["MySQL", "Firebase"],
-    "data_visualization": ["Tableau"],
-    "machine_learning": ["Machine Learning", "Deep Learning", "Data Science"],
-    "embedded_systems": ["Arduino", "MicroPython", "Tkinter"],
-    "algorithms": ["Data Structures and Algorithms"]
+  "technical_skills": {
+    "programming_languages": "Python, R, C, C++, MicroPython",
+    "web_development": "HTML5, CSS3, Flask, Streamlit, PHP, JavaScript",
+    "frameworks_and_tools": "Tkinter, LangChain, HuggingFace, RAG",
+    "databases": "MySQL, Firebase (Cloud Firestore)",
+    "ai_ml": "Machine Learning, Deep Learning, NLP",
+    "data_visualization": "Tableau",
+    "core_cs": "Data Structures & Algorithms"
   },
+  "power_skills": [
+    "Critical Thinking",
+    "Leadership & Teamwork",
+    "Public Speaking",
+    "Problem Solving",
+    "Rational Thinking",
+    "Generalization & Modularity"
+  ],
+
   "projects": [
+    {
+      "image_url": "ResumeRecon.jpg",
+      "title": "ResumeRecon",
+      "description": "Engineered an intelligent CV matcher using LangChain, HuggingFace, FAISS, and Streamlit, supporting bulk uploads, role-specific filtering, and USP extraction.",
+      "date": "Jul '25",
+      "technologies": ["LangChain", "HuggingFace", "FAISS", "Streamlit"],
+      "project_type": "Web Application / AI",
+      "project_category": "Major",
+      "stream": "Data Science & AI",
+      "show": "Yes"
+    },
+    {
+      "image_url": "YouTube Doubt Solver.jpg",
+      "title": "YouTube Doubt Solver",
+      "description": "Built a question-answering app using Streamlit, LangChain, and HuggingFace, with multilingual transcript translation and RAG-based retrieval.",
+      "date": "Jun '25",
+      "technologies": ["Streamlit", "LangChain", "HuggingFace"],
+      "project_type": "RAG Application / NLP",
+      "project_category": "Major",
+      "stream": "Data Science & AI",
+      "show": "Yes"
+    },
+    {
+      "image_url": "Sentiment Analysis on Tweets.jpg",
+      "title": "Sentiment Analysis on Tweets",
+      "description": "Performed sentiment analysis using FastText, RNN, and VADER on real-time tweets. Compared results across methods for accuracy and performance.",
+      "date": "Jun '25",
+      "technologies": ["FastText", "RNN", "VADER", "NLP"],
+      "project_type": "NLP & ML",
+      "project_category": "Minor",
+      "stream": "Data Science & AI",
+      "show": "No"
+    },
+    {
+      "image_url": "AI Story Creator.jpg",
+      "title": "AI Story Creator",
+      "description": "Built a story generation tool using LLMs that crafts custom stories based on user-defined characters, styles, moods, and desired length.",
+      "date": "Jun '25",
+      "technologies": ["LLM", "Prompt Engineering", "NLP"],
+      "project_type": "Generative AI",
+      "project_category": "Minor",
+      "stream": "AI & Language Models",
+      "show": "No"
+    },
+    {
+      "image_url": "Conversational Chatbot.jpg",
+      "title": "Conversational Chatbot",
+      "description": "Developed a context-aware conversational chatbot for general use, integrating dialogue memory and response optimization.",
+      "date": "Jun '25",
+      "technologies": ["LLM", "LangChain", "Streamlit"],
+      "project_type": "Chatbot",
+      "project_category": "Minor",
+      "stream": "AI & NLP",
+      "show": "No"
+    },
+    {
+      "image_url": "RAG-based CV Chatbot.jpg",
+      "title": "RAG-based CV Chatbot",
+      "description": "Built a RAG-powered chatbot to answer queries about resumes using FAISS, LangChain, HuggingFace LLMs, and Streamlit.",
+      "date": "Jun '25",
+      "technologies": ["LangChain", "HuggingFace", "FAISS", "Streamlit"],
+      "project_type": "RAG + Chatbot",
+      "project_category": "Major",
+      "stream": "AI & Applications",
+      "show": "No"
+    },    
     {
       "image_url": "Hard Coded MLP.jpg",
       "title": "Hard Coded MLP",
@@ -57,7 +140,7 @@
       "date": "Apr '25",
       "technologies": ["Python"],
       "project_type": "Machine Learning",
-      "project_category": "Mini",
+      "project_category": "Minor",
       "stream": "Data Science & AI",
       "show": "Yes"
     },
@@ -66,7 +149,7 @@
       "title": "Indus Valley Script Analysis",
       "description": "Applied deep-learning segmentation to extract and classify symbols on 100 Indus Valley seals; performed statistical and pattern analysis to assist epigraphic research.",
       "date": "Mar '25",
-      "technologies": ["Python", "U‑Net (Keras)", "OpenCV"],
+      "technologies": ["Python", "U-Net (Keras)", "OpenCV"],
       "project_type": "Image Segmentation / Historical Linguistics",
       "project_category": "Major",
       "stream": "Data Science & AI",
@@ -79,19 +162,8 @@
       "date": "Feb '25",
       "technologies": ["Flask", "HTML", "CSS", "JavaScript"],
       "project_type": "Web Development",
-      "project_category": "Mini",
-      "stream": "Web Development",
-      "show": "Yes"
-    },
-    {
-      "image_url": "Adaptive Traffic Management System.jpg",
-      "title": "Adaptive Traffic Management System",
-      "description": "Developed a deep learning solution to reduce traffic congestion with image processing.",
-      "date": "Sep '24",
-      "technologies": ["Python", "Flask"],
-      "project_type": "Deep Learning / AI",
       "project_category": "Major",
-      "stream": "Data Science & AI",
+      "stream": "Web Development",
       "show": "Yes"
     },
     {
@@ -134,7 +206,7 @@
       "date": "Sep '24",
       "technologies": ["Python", "Tkinter"],
       "project_type": "Information Management",
-      "project_category": "Major",
+      "project_category": "Mini",
       "stream": "Application & Game Development",
       "show": "No"
     },
@@ -244,7 +316,7 @@
       "date": "Apr '24",
       "technologies": ["Python", "Tkinter", "YOLO"],
       "project_type": "Computer Vision / AI",
-      "project_category": "Major",
+      "project_category": "Minor",
       "stream": "Data Science & AI",
       "show": "No"
     },
@@ -255,7 +327,7 @@
       "date": "Nov '23",
       "technologies": ["ESP8266"],
       "project_type": "IoT Application",
-      "project_category": "Mini",
+      "project_category": "Minor",
       "stream": "IoT & Embedded Systems",
       "show": "No"
     },
@@ -266,7 +338,7 @@
       "date": "Oct '23",
       "technologies": ["Tableau", "R"],
       "project_type": "Data Visualization",
-      "project_category": "Major",
+      "project_category": "Minor",
       "stream": "Data Science & AI",
       "show": "No"
     },
@@ -288,7 +360,7 @@
       "date": "Sep '23",
       "technologies": ["R"],
       "project_type": "Data Analysis",
-      "project_category": "Mini",
+      "project_category": "Minor",
       "stream": "Data Science & AI",
       "show": "No"
     },
@@ -321,7 +393,7 @@
       "date": "Jan '23",
       "technologies": ["C", "GUI Libraries"],
       "project_type": "Game Development",
-      "project_category": "Mini",
+      "project_category": "Minor",
       "stream": "Application & Game Development",
       "show": "No"
     },
@@ -354,7 +426,7 @@
       "date": "Nov '22",
       "technologies": ["Arduino"],
       "project_type": "Embedded Systems / Robotics",
-      "project_category": "Mini",
+      "project_category": "Minor",
       "stream": "IoT & Embedded Systems",
       "show": "No"
     }
@@ -362,7 +434,8 @@
   "patents": [
     {
       "image_url": "Sustainable Elevator.jpg",
-      "title": "Sustainable Elevator | Applied",
+      "title": "Sustainable Elevator",
+      "patent_number": "Applied",
       "description": "Optimized algorithm for elevator movement with energy regeneration and emergency handling.",
       "date": "Feb '24",
       "domain": "IOT, Mechanical, Electrical, Automation",
@@ -370,7 +443,8 @@
     },
     {
       "image_url": "Smart Pillow.jpg",
-      "title": "Smart Pillow | 202311080891",
+      "title": "Smart Pillow",
+      "patent_number": "202311080891",
       "description": "Developed a prototype that adjusts pillow dimensions based on sleeping posture.",
       "date": "Dec '23",
       "technologies": ["Machine Learning", "Image Processinng", "IOT", "Automation"],
@@ -379,7 +453,8 @@
     },
     {
       "image_url": "Smart Container.jpg",
-      "title": "Smart Container | 202311020732 A",
+      "title": "Smart Container",
+      "patent_number": "202311020732 A",
       "description": "Developed a prototype that allows the measurement of any flowable material such as spices, sugar, rice, etc. present in a container.",
       "date": "Mar '23",
       "domain": "IOT, Automation",
@@ -387,16 +462,38 @@
     },
     {
       "image_url": "Smart Room.jpg",
-      "title": "Smart Room | 202311042366 A",
+      "title": "Smart Room",
+      "patent_number": "202311042366 A",
       "description": "Developed a prototype that uses ultrasonic for human presence and other smart technologies to save electricity in a household.",
       "date": "Mar '23",
       "domain": "IOT, Automation",
       "stream": "IoT & Embedded Systems"
     }
   ],
+  "research_works":[
+    {
+    "image_url": "Traffic Management System.jpg",
+    "title": "An IoT and Cloud Computing-Based Traffic Management System | AISTS 2025 Conference",
+    "research_work_number": "#1571151942",
+    "description": "Accepted for presentation at the AISTS 2025 Conference, Marwadi University. To appear in IEEE Xplore.",
+    "date": "2025",
+    "domain": "IoT, Cloud Computing, Smart Cities",
+    "stream": "Research & Patents"
+  },
+  {
+    "image_url": "Traffic Management System.jpg",
+    "title": "A Real-Time Vehicle Detection-Based IoT Impelled Traffic Management System | Quantum-Enhanced IoT (Bentham Science)",
+    "research_work_number": "",
+    "description": "Nagpal, M., & Kaur, R. (2025). A Real-Time Vehicle Detection-Based IoT Impelled Traffic Management System. Accepted for publication in *Quantum-Enhanced IoT: The Future of Smart and Sustainable Urban Spaces*, Bentham Science Publishers.",
+    "date": "2025",
+    "domain": "IoT, Cloud Computing, Smart Cities, Vehicle Detection",
+    "stream": "Research & Patents"
+  }
+  ],
   "social_links": {
     "github": "https://github.com/mokeshnagpal",
     "linkedin": "https://www.linkedin.com/in/mokeshnagpal",
+    "leetcode": "https://leetcode.com/u/nagpalmokesh",
     "email": "nagpalmokesh@gmail.com",
     "phone": "+91 9903855585"
   }

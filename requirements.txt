@@ -1,4 +1,12 @@
-Flask
-python-dotenv
 gunicorn
+Flask
 firebase-admin
+python-dotenv
+requests
+jinja2
+langchain
+langchain-core
+langchain-community
+langchain-huggingface
+faiss-cpu
+regex
