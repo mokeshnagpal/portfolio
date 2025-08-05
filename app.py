@@ -24,7 +24,10 @@ if 'private_key' in firebase_credentials_dict:
 
 # Initialize Firebase Admin with the credentials dictionary
 cred = credentials.Certificate(firebase_credentials_dict)
-firebase_admin.initialize_app(cred)
+try:
+    firebase_admin.initialize_app(cred)
+except Exception as e:
+    print(e)
 db = firestore.client()
 
 def load_cv_data():
@@ -65,6 +68,12 @@ def skills():
     return render_template('skills.html', cv=cv_data)
 
 
+CATEGORY_BADGES = {
+    "Major Project": "bg-primary",
+    "Minor Project": "bg-success",
+    "Mini Project":  "bg-secondary",
+}
+
 @app.route('/projects')
 def projects():
     # read query parameters
@@ -102,7 +111,8 @@ def projects():
         categories=categories,
         streams  = streams, 
         current_filter=filter_by or 'all',
-        current_value=filter_value or ''
+        current_value=filter_value or '',
+        category_badges = CATEGORY_BADGES
     )
 
 @app.route('/patents')
@@ -234,4 +244,5 @@ def chatbot():
 
 
 if __name__ == '__main__':
+
     app.run(debug=True)
