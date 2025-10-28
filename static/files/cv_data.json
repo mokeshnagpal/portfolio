@@ -3,6 +3,13 @@
   "professional_summary": "An aspiring Data Scientist with strong technical skills in web technologies, programming, and data visualization. A fluent coder, curious learner, and innovative problem-solver dedicated to driving actionable insights.",
   "work_experiences": [
     {
+      "position": "Software Development Engineer",
+      "company": "Fastenal",
+      "description": "Learned and applied backend engineering, CI/CD, and automation practices to deliver reliable inventory and supply-chain tools.",
+      "start_date": "Jan '26",
+      "end_date": "Jun '26"
+    },
+    {
       "position": "Data Science Intern",
       "company": "Ernst & Young (EY)",
       "description": "Focused on natural language processing, text classification, prompt engineering, and fine‑tuning generative AI models.",
@@ -52,7 +59,7 @@
     "programming_languages": "Python, R, C, C++, MicroPython",
     "web_development": "HTML5, CSS3, Flask, Streamlit, PHP, JavaScript",
     "frameworks_and_tools": "Tkinter, LangChain, HuggingFace, RAG",
-    "databases": "MySQL, Firebase (Cloud Firestore)",
+    "databases": "MySQL, MongoDB, Firebase (Cloud Firestore)",
     "ai_ml": "Machine Learning, Deep Learning, NLP",
     "data_visualization": "Tableau",
     "core_cs": "Data Structures & Algorithms"
@@ -67,6 +74,62 @@
   ],
 
   "projects": [
+    {
+      "image_url": "Sanjeevani_AI_Doctor.jpg",
+      "title": "AI Doctor 'Sanjeevani'",
+      "description": "Developed an intelligent health assistant web app using Flask and MongoDB where users sign up, input symptoms, and receive disease predictions via a trained TabNet model. User inputs are grammar-corrected using an LLM, symptom columns are extracted and passed to the model for prediction. The app visualizes disease probability using pie charts, provides DuckDuckGo-based disease descriptions, and offers autocomplete suggestions powered by FAISS and cosine similarity with associative suggestions ('you might also have...').",
+      "date": "Dec '25",
+      "technologies": ["Flask", "MongoDB", "FAISS", "TabNet", "LLM", "DuckDuckGo API", "JavaScript", "HTML", "CSS"],
+      "project_type": "AI + Web Development",
+      "project_category": "Major Project",
+      "stream": "AI & HealthTech",
+      "show": "Yes"
+    },
+    {
+      "image_url": "Climate_Analysis_Dashboard.jpg",
+      "title": "Climate Analysis & Forecasting Dashboard",
+      "description": "Built a predictive climate analytics dashboard using Flask and SARIMAX/ARIMAX models to forecast temperature and rainfall for all latitudes and longitudes across India. The project features dynamic visual analytics, animated GIFs for 5-year prediction trends, and interactive time-series visualizations for climate insights.",
+      "date": "Nov '25",
+      "technologies": ["Flask", "SARIMAX", "ARIMAX", "Plotly", "Dash", "Pandas", "Matplotlib"],
+      "project_type": "Data Science",
+      "project_category": "Research Project",
+      "stream": "Climate Analytics",
+      "show": "No"
+    },
+    {
+      "image_url": "Food_Calorie_Predictor.jpg",
+      "title": "Food Calorie Predictor using YOLO",
+      "description": "Designed a real-time calorie estimation system that detects food items from images using YOLO and predicts calorie content based on food category and portion estimation. Includes a visual display of detection bounding boxes and estimated total calorie count for multiple dishes in one frame.",
+      "date": "Oct '25",
+      "technologies": ["YOLOv8", "OpenCV", "Flask", "Python", "TensorFlow", "Numpy"],
+      "project_type": "Computer Vision",
+      "project_category": "Minor Project",
+      "stream": "AI & Image Processing",
+      "show": "No"
+    },
+    {
+      "image_url": "Language_Converter_Tool.jpg",
+      "title": "Multilingual Audio & Text Converter",
+      "description": "Created a robust script using LangChain and Hugging Face models that converts broken or inaudible audio to clear speech, translates Hindi to English, and supports multi-modal text-audio conversion. Designed for accessibility and cross-lingual communication enhancement.",
+      "date": "Sep '25",
+      "technologies": ["LangChain", "Hugging Face Transformers", "SpeechRecognition", "TTS", "Whisper", "Python"],
+      "project_type": "AI Automation",
+      "project_category": "NLP + Speech Project",
+      "stream": "AI & Linguistics",
+      "show": "No"
+    },
+    {
+      "image_url": "Rail_Madad_Chatbot.jpg",
+      "title": "Rail Madad Chatbot (Gemma 2B Finetune)",
+      "description": "Implemented a domain-specific chatbot fine-tuned on the Gemma 2B model using complaint–action data for Indian Railways. The model was trained via Hugging Face Transformers on a custom complaint dataset to predict optimal actions with high accuracy. Integrated into a Flask web app for real-time complaint classification, explanation, and response generation.",
+      "date": "Aug '25",
+      "technologies": ["Gemma 2B", "Hugging Face", "Transformers", "Pandas", "Flask", "PyTorch", "Trainer API"],
+      "project_type": "AI Chatbot",
+      "project_category": "Major Project",
+      "stream": "AI & NLP",
+      "show": "Yes"
+    },
+
       {
         "image_url": "ResumeRecon.jpg",
         "title": "ResumeRecon",

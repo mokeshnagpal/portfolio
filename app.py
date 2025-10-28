@@ -67,7 +67,6 @@ def skills():
     }
     return render_template('skills.html', cv=cv_data)
 
-
 CATEGORY_BADGES = {
     "Major Project": "bg-primary",
     "Minor Project": "bg-success",
@@ -244,5 +243,4 @@ def chatbot():
 
 
 if __name__ == '__main__':
-
     app.run(debug=True)
