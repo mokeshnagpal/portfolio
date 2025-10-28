@@ -74,6 +74,17 @@
   ],
 
   "projects": [
+        {
+      "image_url": "FinTak_Monthly_Spending.jpg",
+      "title": "FinTak – Monthly Spending Tracker",
+      "description": "Built a personal finance management web app using Flask and Google Firestore that enables users to track daily expenses, categorize spending, and visualize monthly trends through dynamic charts. The system supports secure authentication, CRUD operations for transactions, and provides analytical insights like top spending categories, monthly savings patterns, and budget alerts. Integrated date filters, responsive dashboards, and automated data summaries for better financial decision-making.",
+      "date": "Nov '25",
+      "technologies": ["Flask", "Google Firestore", "JavaScript", "HTML", "CSS", "Chart.js", "Bootstrap"],
+      "project_type": "Web Application",
+      "project_category": "Minor Project",
+      "stream": "Finance & Analytics",
+      "show": "No"
+    },
     {
       "image_url": "Sanjeevani_AI_Doctor.jpg",
       "title": "AI Doctor 'Sanjeevani'",
@@ -92,19 +103,8 @@
       "date": "Nov '25",
       "technologies": ["Flask", "SARIMAX", "ARIMAX", "Plotly", "Dash", "Pandas", "Matplotlib"],
       "project_type": "Data Science",
-      "project_category": "Research Project",
+      "project_category": "Major Project",
       "stream": "Climate Analytics",
-      "show": "No"
-    },
-    {
-      "image_url": "Food_Calorie_Predictor.jpg",
-      "title": "Food Calorie Predictor using YOLO",
-      "description": "Designed a real-time calorie estimation system that detects food items from images using YOLO and predicts calorie content based on food category and portion estimation. Includes a visual display of detection bounding boxes and estimated total calorie count for multiple dishes in one frame.",
-      "date": "Oct '25",
-      "technologies": ["YOLOv8", "OpenCV", "Flask", "Python", "TensorFlow", "Numpy"],
-      "project_type": "Computer Vision",
-      "project_category": "Minor Project",
-      "stream": "AI & Image Processing",
       "show": "No"
     },
     {
@@ -114,7 +114,7 @@
       "date": "Sep '25",
       "technologies": ["LangChain", "Hugging Face Transformers", "SpeechRecognition", "TTS", "Whisper", "Python"],
       "project_type": "AI Automation",
-      "project_category": "NLP + Speech Project",
+      "project_category": "Minor Project",
       "stream": "AI & Linguistics",
       "show": "No"
     },
@@ -127,7 +127,7 @@
       "project_type": "AI Chatbot",
       "project_category": "Major Project",
       "stream": "AI & NLP",
-      "show": "Yes"
+      "show": "No"
     },
 
       {
@@ -148,7 +148,7 @@
         "date": "Jun '25",
         "technologies": ["Streamlit", "LangChain", "HuggingFace"],
         "project_type": "RAG Application / NLP",
-        "project_category": "Major Project",
+        "project_category": "Minor Project",
         "stream": "Data Science & AI",
         "show": "Yes"
       },
