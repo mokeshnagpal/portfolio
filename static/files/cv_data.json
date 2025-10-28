@@ -105,7 +105,7 @@
       "project_type": "Data Science",
       "project_category": "Major Project",
       "stream": "Climate Analytics",
-      "show": "No"
+      "show": "Yes"
     },
     {
       "image_url": "Language_Converter_Tool.jpg",
@@ -150,7 +150,7 @@
         "project_type": "RAG Application / NLP",
         "project_category": "Minor Project",
         "stream": "Data Science & AI",
-        "show": "Yes"
+        "show": "No"
       },
       {
         "image_url": "Sentiment Analysis on Tweets.jpg",
@@ -216,7 +216,7 @@
         "project_type": "Image Segmentation / Historical Linguistics",
         "project_category": "Major Project",
         "stream": "Data Science & AI",
-        "show": "Yes"
+        "show": "No"
       },
       {
         "image_url": "Security Management Website.jpg",
@@ -227,7 +227,7 @@
         "project_type": "Web Development",
         "project_category": "Major Project",
         "stream": "Web Development",
-        "show": "Yes"
+        "show": "No"
       },
       {
         "image_url": "Image Space and Color Detect.jpg",
@@ -480,7 +480,7 @@
         "project_type": "Web Development",
         "project_category": "Major Project",
         "stream": "Web Development",
-        "show": "Yes"
+        "show": "No"
       },
       {
         "image_url": "Data Analysis on Climate Change.jpg",
