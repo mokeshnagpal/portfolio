@@ -1,7 +1,15 @@
 {
   "full_name": "Mokesh Nagpal",
   "professional_summary": "An aspiring Data Scientist with strong technical skills in web technologies, programming, and data visualization. A fluent coder, curious learner, and innovative problem-solver dedicated to driving actionable insights.",
-  "work_experiences": [
+  "achievements": [
+  {
+    "title": "Gold Medalist – Bachelor of Computer Applications",
+    "institution": "Lovely Professional University, Phagwara",
+    "year": "2024",
+    "description": "Awarded for securing top academic rank in the BCA program across the university."
+  }
+],
+"work_experiences": [
     {
       "position": "Software Development Engineer",
       "company": "Fastenal",
@@ -741,3 +749,4 @@
     "phone": "+91 9903855585"
   }
 }
+
